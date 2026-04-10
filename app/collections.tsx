@@ -25,65 +25,75 @@ export default function Collections() {
       ]
     },
     {
-      title: "History",
+      title: "Tom & Jerry",
       img: "/images/tom-and-jerry.jpg",
       count: "431",
       child: [
         "/images/tom-and-jerry-1.jpg",
         "/images/tom-and-jerry-2.jpg",
         "/images/tom-and-jerry-3.jpg",
-        "/images/tom-and-jerry-4.jpg"
+        "/images/tom-and-jerry-5.jpg"
       ]
     },
   ];
 
   return (
-    <div className="min-h-screen bg-gray-200 flex items-center justify-center p-6">
-      <div className="bg-gray-100 rounded-2xl shadow-lg p-8 w-full">
+    <div className="min-h-screen bg-gray-200 flex items-center justify-center px-3 sm:px-4 md:px-6 lg:px-8 py-6">
+      <div className="bg-gray-100 rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 w-full">
 
         {/* Header */}
-        <h2 className="text-xl font-semibold mb-4">Popular Collections</h2>
+        <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4">
+          Popular Collections
+        </h2>
 
         {/* Filters */}
         <div className="flex gap-2 mb-6 flex-wrap">
           {["Profile", "New York", "Relaxing", "Person", "Fashion"].map((item) => (
             <button
               key={item}
-              className="px-3 py-1 bg-white rounded-full text-sm shadow-sm hover:bg-gray-200"
+              className="px-3 py-1 text-xs sm:text-sm bg-white rounded-full shadow-sm hover:bg-gray-200 transition"
             >
               {item}
             </button>
           ))}
         </div>
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {cards.map((card) => (
+        {/* Cards Grid */}
+        <div className="flex gap-4 sm:gap-5 md:gap-6 overflow-x-auto pb-2 sm:flex xl:grid xl:grid-cols-3 xl:overflow-visible">
+          {cards.map((card, i) => (
             <div
               key={card.title}
-              className="bg-white rounded-2xl p-4 shadow hover:shadow-md transition"
+              className="min-w-[80%] sm:min-w-[45%] md:min-w-[60%] lg:min-w-[44%] xl:min-w-0 bg-white rounded-2xl p-3 sm:p-4 shadow hover:shadow-md transition"
             >
               {/* Main Image */}
-              <div className="relative w-full h-64 mb-3">
+              <div className="relative w-full h-48 sm:h-52 md:h-56 lg:h-60 mb-3">
                 <Image
                   src={card.img}
                   alt={card.title}
                   fill
                   className="object-cover rounded-xl"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  priority={card.title === "People"} // improves LCP
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                  priority={i === 0}
                 />
               </div>
 
               {/* Thumbnails */}
               <div className="flex gap-2 mb-3">
                 {card.child.map((img, i) => (
-                  <div key={i} className="relative w-25 h-25">
+                  <div
+                    key={i}
+                    className="relative w-20 h-20 sm:w-24 sm:h-24 xl:w-28 xl:h-28"
+                  >
                     <Image
                       src={img}
                       alt="thumb"
                       fill
                       className="object-cover rounded-lg"
+                      sizes="(max-width: 640px) 280px, (max-width: 1280px) 320px, 360px"
+                      quality={100}
+                      priority={i < 2}
+                      placeholder="empty"
+                      style={{ imageRendering: 'auto' }}
                     />
                   </div>
                 ))}
@@ -91,8 +101,12 @@ export default function Collections() {
 
               {/* Footer */}
               <div className="flex justify-between items-center">
-                <span className="font-medium">{card.title}</span>
-                <span className="text-sm text-gray-500">📷 {card.count}</span>
+                <span className="text-sm sm:text-base font-medium">
+                  {card.title}
+                </span>
+                <span className="text-xs sm:text-sm text-gray-500">
+                  📷 {card.count}
+                </span>
               </div>
             </div>
           ))}
