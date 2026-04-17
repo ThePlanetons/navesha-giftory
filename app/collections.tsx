@@ -1,6 +1,11 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 
 export default function Collections() {
+  const [active, setActive] = useState("Featured Universes");
+
   const cards = [
     {
       title: "Spider-Man",
@@ -48,10 +53,16 @@ export default function Collections() {
 
         {/* Filters */}
         <div className="flex gap-2 mb-6 flex-wrap">
-          {["Profile", "New York", "Relaxing", "Person", "Fashion"].map((item) => (
+          {["Kollywood Classics", "Featured Universes", "Hollywood Highlights", "Korean Wave", "Action Packed", "Editor’s Choice", "Feel Good", "Trending Now"].map((item) => (
             <button
               key={item}
-              className="px-3 py-1 text-xs sm:text-sm bg-white rounded-full shadow-sm hover:bg-gray-200 transition"
+              onClick={() => setActive(item)}
+              className={`px-3 py-1 text-xs sm:text-sm rounded-full shadow-sm transition
+                ${active === item
+                  ? "bg-red-500 text-white"
+                  : "bg-white text-gray-700 hover:bg-gray-200"
+                }`
+              }
             >
               {item}
             </button>

@@ -28,7 +28,7 @@ export default function Navbar({ scrolled }: { scrolled: boolean }) {
               key={item}
               className={`px-4 py-1.5 rounded-full transition-all duration-300
                 ${i === 0
-                  ? "bg-black text-white shadow-sm"
+                  ? "bg-red-500 text-white shadow-sm"
                   : "text-gray-600 hover:bg-white/40 hover:text-black"
                 }`
               }
@@ -40,10 +40,10 @@ export default function Navbar({ scrolled }: { scrolled: boolean }) {
 
         {/* CTA */}
         <button
-          className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300
+          className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-red-500 text-white
             ${scrolled
-              ? "bg-black text-white shadow-md hover:scale-105"
-              : "bg-red-500 text-white hover:scale-105"
+              ? "shadow-md hover:scale-105"
+              : "hover:scale-105"
             }`
           }
         >
