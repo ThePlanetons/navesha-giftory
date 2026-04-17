@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 // import Image from "next/image";
 
 import Collections from "./collections";
-import Landing from "./landing";
+import HeroSection from "./hero-section";
 import Navbar from "./navbar";
 // import TopBanner from "./top-banner";
 
@@ -29,7 +29,7 @@ export default function Home() {
 
       {/* Page Content */}
       <div className="pt-27.5 md:pt-30">
-        <Landing />
+        <HeroSection />
         <Collections />
       </div>
     </>

@@ -43,7 +43,7 @@ export default function Collections() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-200 flex items-center justify-center px-3 sm:px-4 md:px-6 lg:px-8 py-6">
+    <div className="flex items-center justify-center px-3 sm:px-4 md:px-6 lg:px-8 py-6">
       <div className="bg-gray-100 rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 w-full">
 
         {/* Header */}
@@ -57,7 +57,7 @@ export default function Collections() {
             <button
               key={item}
               onClick={() => setActive(item)}
-              className={`px-3 py-1 text-xs sm:text-sm rounded-full shadow-sm transition
+              className={`px-3 py-1 text-xs sm:text-sm rounded-full shadow-sm transition cursor-pointer
                 ${active === item
                   ? "bg-red-500 text-white"
                   : "bg-white text-gray-700 hover:bg-gray-200"
