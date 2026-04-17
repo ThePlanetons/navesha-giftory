@@ -26,13 +26,13 @@ export default function Collections() {
     },
     {
       title: "Tom & Jerry",
-      img: "/images/tom-and-jerry.jpg",
+      img: "/images/tom-and-jerry-5.jpg",
       count: "431",
       child: [
         "/images/tom-and-jerry-1.jpg",
         "/images/tom-and-jerry-2.jpg",
         "/images/tom-and-jerry-3.jpg",
-        "/images/tom-and-jerry-5.jpg"
+        "/images/tom-and-jerry.jpg"
       ]
     },
   ];
@@ -59,7 +59,7 @@ export default function Collections() {
         </div>
 
         {/* Cards Grid */}
-        <div className="flex gap-4 sm:gap-5 md:gap-6 overflow-x-auto pb-2 sm:flex xl:grid xl:grid-cols-3 xl:overflow-visible">
+        <div className="flex gap-4 sm:gap-5 md:gap-6 overflow-x-auto pb-2 sm:flex xl:grid xl:grid-cols-3 xl:overflow-visible no-scrollbar">
           {cards.map((card, i) => (
             <div
               key={card.title}

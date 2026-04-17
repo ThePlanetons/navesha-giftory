@@ -1,11 +1,37 @@
+"use client";
+import { useEffect, useState } from "react";
 // import Image from "next/image";
 
 import Collections from "./collections";
+import Landing from "./landing";
+import Navbar from "./navbar";
+// import TopBanner from "./top-banner";
 
 export default function Home() {
-  return(
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
     <>
-      <Collections />
+      {/* Fixed Header */}
+      <div className="fixed top-0 left-0 w-full z-50">
+        {/* <TopBanner scrolled={scrolled} /> */}
+        <Navbar scrolled={scrolled} />
+      </div>
+
+      {/* Page Content */}
+      <div className="pt-27.5 md:pt-30">
+        <Landing />
+        <Collections />
+      </div>
     </>
   );
   // return (
