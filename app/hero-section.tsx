@@ -4,10 +4,11 @@ import Image from "next/image";
 export default function HeroSection() {
   const images = [
     "/images/one-piece-1.jpg",
-    "/images/spider-man-4.jpg",
+    "/images/grand-theft-auto-6-video-game.jpg",
     "/images/tom-and-jerry.jpg",
-    "/images/kpop-demon-hunters-rumi-mira-and-zoey.jpg",
+    "/images/wednesday-addams-jenna-ortega.jpg",
     "/images/anime-boy-sleeping-outdoors.jpg",
+    "/images/cyberpunk-rider-in-the-neon-megacity.jpg",
   ];
 
   return (
@@ -34,29 +35,29 @@ export default function HeroSection() {
         {/* Image Section */}
         <div className="relative overflow-hidden">
           {/* Curved Top Effect */}
-          <div className="absolute top-0 left-0 w-full h-20 bg-white rounded-bl-[25%_100%] rounded-br-[25%_100%] z-10"></div>
+          <div className="absolute top-0 left-0 w-full h-12 sm:h-16 md:h-20 bg-white rounded-bl-[35%_100%] sm:rounded-bl-[40%_100%] md:rounded-bl-[45%_100%] rounded-br-[35%_100%] sm:rounded-br-[40%_100%] md:rounded-br-[45%_100%] z-10"></div>
 
-          <div className="flex w-max animate-scroll">
+          <div className="flex w-max animate-scroll gap-1 sm:gap-2">
             {[...images, ...images].map((src, i) => (
               <div key={i}
-                // className="relative w-full h-56 md:h-100 overflow-hidden"
-                className="relative w-80 h-56 md:h-100 shrink-0 mx-1 overflow-hidden"
+                className="relative w-44 sm:w-60 md:w-80 h-60 md:h-80 lg:h-100 shrink-0 overflow-hidden"
               >
                 <Image
                   src={src}
                   alt="art"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw"
                 />
               </div>
             ))}
           </div>
 
-          {/* Deep Center Concave Curve */}
-          {/* <div className="pointer-events-none absolute -bottom-10 left-1/2 -translate-x-1/2 w-[120%] h-20 bg-gray-200 rounded-[50%] z-20"></div> */}
-          {/* Curved Bottom Effect */}
-          <div className="absolute bottom-0 left-0 w-full h-16 bg-white rounded-tl-[95%_100%] rounded-tr-[95%_100%]"></div>
+          {/* Bottom Base Curve */}
+          <div className="absolute bottom-0 left-0 w-full h-10 sm:h-12 md:h-16 bg-white rounded-tl-[35%_100%] sm:rounded-tl-[40%_100%] md:rounded-tl-[45%_100%] rounded-tr-[35%_100%] sm:rounded-tr-[40%_100%] md:rounded-tr-[45%_100%]"></div>
+
+          {/* Center Concave Cut */}
+          <div className="pointer-events-none absolute -bottom-6 sm:-bottom-8 md:-bottom-10 left-1/2 -translate-x-1/2 w-[140%] sm:w-[130%] md:w-[120%] h-24 sm:h-32 md:h-40 rounded-[50%] z-20"></div>
         </div>
       </div>
     </div>

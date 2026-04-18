@@ -6,6 +6,14 @@ import Image from "next/image";
 export default function Collections() {
   const [active, setActive] = useState("Featured Universes");
 
+  const navItems = [
+    { label: "Home", value: "home" },
+    { label: "About", value: "about" },
+    { label: "Features", value: "features" },
+    { label: "Product", value: "product" },
+    { label: "Gallery", value: "gallery" },
+  ];
+
   const cards = [
     {
       title: "Spider-Man",

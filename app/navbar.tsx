@@ -1,6 +1,20 @@
 "use client";
 
+import { useState } from "react";
+import SlidingPillNav from "./sliding-pill-nav";
+// import PillTabs from "./pill-tabs";
+
 export default function Navbar({ scrolled }: { scrolled: boolean }) {
+  const [active, setActive] = useState("home");
+
+  const navItems = [
+    { label: "Home", value: "home" },
+    { label: "About", value: "about" },
+    { label: "Features", value: "features" },
+    { label: "Product", value: "product" },
+    { label: "Gallery", value: "gallery" },
+  ];
+
   return (
     <div
       className="w-full flex justify-center transition-all duration-500 transform py-3"
@@ -19,7 +33,18 @@ export default function Navbar({ scrolled }: { scrolled: boolean }) {
         </div>
 
         {/* Nav Items */}
-        <div className="hidden md:flex gap-2 text-sm">
+        <SlidingPillNav />
+        {/* <PillTabs
+          items={navItems}
+          active={active}
+          onChange={setActive}
+          size="md"
+          variant="glass"
+          animated
+          magnetic
+        /> */}
+
+        {/* <div className="hidden md:flex gap-2 text-sm">
           {["Home", "About", "Features", "Product"].map((item, i) => (
             <button
               key={item}
@@ -33,7 +58,7 @@ export default function Navbar({ scrolled }: { scrolled: boolean }) {
               {item}
             </button>
           ))}
-        </div>
+        </div> */}
 
         {/* CTA */}
         <button
