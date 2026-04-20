@@ -2,17 +2,24 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import PillTabs from "./pill-tabs ";
 
 export default function Collections() {
-  const [active, setActive] = useState("Featured Universes");
+  const categories = [
+    "Kollywood Classics",
+    "Featured Universes",
+    "Hollywood Highlights",
+    "Korean Wave",
+    "Action Packed",
+    "Editor’s Choice",
+    "Feel Good",
+    "Trending Now",
+  ].map((item) => ({
+    label: item,
+    value: item.toLowerCase(),
+  }));
 
-  const navItems = [
-    { label: "Home", value: "home" },
-    { label: "About", value: "about" },
-    { label: "Features", value: "features" },
-    { label: "Product", value: "product" },
-    { label: "Gallery", value: "gallery" },
-  ];
+  const [categoryActive, setCategoryActive] = useState("featured universes");
 
   const cards = [
     {
@@ -60,25 +67,16 @@ export default function Collections() {
         </h2>
 
         {/* Filters */}
-        <div className="flex gap-2 mb-6 flex-wrap">
-          {["Kollywood Classics", "Featured Universes", "Hollywood Highlights", "Korean Wave", "Action Packed", "Editor’s Choice", "Feel Good", "Trending Now"].map((item) => (
-            <button
-              key={item}
-              onClick={() => setActive(item)}
-              className={`px-3 py-1 text-xs sm:text-sm rounded-full shadow-sm transition cursor-pointer
-                ${active === item
-                  ? "bg-red-500 text-white"
-                  : "bg-white text-gray-700 hover:bg-gray-200"
-                }`
-              }
-            >
-              {item}
-            </button>
-          ))}
-        </div>
+        <PillTabs
+          items={categories}
+          value={categoryActive}
+          onChange={setCategoryActive}
+          size="md"
+          id="collections"
+        />
 
         {/* Cards Grid */}
-        <div className="flex gap-4 sm:gap-5 md:gap-6 overflow-x-auto pb-2 sm:flex xl:grid xl:grid-cols-3 xl:overflow-visible no-scrollbar">
+        <div className="flex gap-4 sm:gap-5 md:gap-6 overflow-x-auto pb-2 mt-6 sm:flex xl:grid xl:grid-cols-3 xl:overflow-visible no-scrollbar">
           {cards.map((card, i) => (
             <div
               key={card.title}
@@ -123,9 +121,10 @@ export default function Collections() {
                 <span className="text-sm sm:text-base font-medium">
                   {card.title}
                 </span>
-                <span className="text-xs sm:text-sm text-gray-500">
-                  📷 {card.count}
-                </span>
+
+                <button className="text-xs sm:text-sm px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 transition">
+                  View All
+                </button>
               </div>
             </div>
           ))}

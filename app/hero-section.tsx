@@ -19,7 +19,7 @@ export default function HeroSection() {
           <h1 className="text-2xl md:text-4xl font-semibold leading-snug">
             The Art of Human Expression, Uncover
             <br />
-            <span className="italic font-normal">The Stories</span> Behind the Art
+            <span className="italic font-normal">The Stories</span> Behind Every Wall Poster
           </h1>
 
           {/* <p className="text-gray-500 mt-4 text-sm md:text-base max-w-xl mx-auto">
@@ -33,14 +33,27 @@ export default function HeroSection() {
         </div>
 
         {/* Image Section */}
-        <div className="relative overflow-hidden">
-          {/* Curved Top Effect */}
-          <div className="absolute top-0 left-0 w-full h-12 sm:h-16 md:h-20 bg-white rounded-bl-[35%_100%] sm:rounded-bl-[40%_100%] md:rounded-bl-[45%_100%] rounded-br-[35%_100%] sm:rounded-br-[40%_100%] md:rounded-br-[45%_100%] z-10"></div>
+        <div className="relative overflow-hidden perspective-[1800px]">
 
-          <div className="flex w-max animate-scroll gap-1 sm:gap-2">
+          {/* 🔝 Top Curve */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 
+    w-[140%] sm:w-[130%] md:w-[120%] 
+    h-12 sm:h-16 md:h-20 
+    bg-white rounded-b-[100%] z-10"
+          />
+
+          {/* 🎬 Curved Screen Wrapper */}
+          <div
+            className="flex w-max animate-scroll gap-2 px-4 sm:px-6 md:px-10"
+            style={{
+              transform: "rotateX(18deg) scaleY(0.85) scale(1.1)",
+              transformOrigin: "top center",
+            }}
+          >
             {[...images, ...images].map((src, i) => (
-              <div key={i}
-                className="relative w-44 sm:w-60 md:w-80 h-60 md:h-80 lg:h-100 shrink-0 overflow-hidden"
+              <div
+                key={i}
+                className="relative w-44 sm:w-60 md:w-80 h-60 md:h-80 lg:h-100 shrink-0 overflow-hidden rounded-lg"
               >
                 <Image
                   src={src}
@@ -53,11 +66,31 @@ export default function HeroSection() {
             ))}
           </div>
 
-          {/* Bottom Base Curve */}
-          <div className="absolute bottom-0 left-0 w-full h-10 sm:h-12 md:h-16 bg-white rounded-tl-[35%_100%] sm:rounded-tl-[40%_100%] md:rounded-tl-[45%_100%] rounded-tr-[35%_100%] sm:rounded-tr-[40%_100%] md:rounded-tr-[45%_100%]"></div>
+          {/* 🌫️ Center Push (MAIN CURVE ILLUSION) */}
+          <div
+            className="pointer-events-none absolute inset-0 z-20"
+            style={{
+              WebkitMaskImage:
+                "radial-gradient(ellipse at center, black 40%, transparent 100%)",
+              maskImage:
+                "radial-gradient(ellipse at center, black 40%, transparent 100%)",
+              background:
+                "linear-gradient(to bottom, rgba(255,255,255,0.9), transparent 40%, rgba(0,0,0,0.35))",
+            }}
+          />
 
-          {/* Center Concave Cut */}
-          <div className="pointer-events-none absolute -bottom-6 sm:-bottom-8 md:-bottom-10 left-1/2 -translate-x-1/2 w-[140%] sm:w-[130%] md:w-[120%] h-24 sm:h-32 md:h-40 rounded-[50%] z-20"></div>
+          {/* 🌑 Edge Depth */}
+          <div className="pointer-events-none absolute inset-0 z-20 
+    bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.25))]"
+          />
+
+          {/* 🔻 Bottom Curve */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 
+    w-[140%] sm:w-[130%] md:w-[120%] 
+    h-10 sm:h-12 md:h-16 
+    bg-white rounded-t-[100%]"
+          />
+
         </div>
       </div>
     </div>

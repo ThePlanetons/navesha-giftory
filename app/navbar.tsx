@@ -1,19 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import SlidingPillNav from "./sliding-pill-nav";
-// import PillTabs from "./pill-tabs";
+import PillTabs from "./pill-tabs ";
+import { ShoppingCart, CircleUserRound } from "lucide-react";
 
 export default function Navbar({ scrolled }: { scrolled: boolean }) {
-  const [active, setActive] = useState("home");
-
   const navItems = [
-    { label: "Home", value: "home" },
-    { label: "About", value: "about" },
-    { label: "Features", value: "features" },
-    { label: "Product", value: "product" },
-    { label: "Gallery", value: "gallery" },
-  ];
+    "Home",
+    "About",
+    "Features",
+    "Product",
+  ].map((item) => ({
+    label: item,
+    value: item.toLowerCase(),
+  }));
+
+  const [navActive, setNavActive] = useState("home");
 
   return (
     <div
@@ -33,44 +35,50 @@ export default function Navbar({ scrolled }: { scrolled: boolean }) {
         </div>
 
         {/* Nav Items */}
-        <SlidingPillNav />
-        {/* <PillTabs
-          items={navItems}
-          active={active}
-          onChange={setActive}
-          size="md"
-          variant="glass"
-          animated
-          magnetic
-        /> */}
+        {/* <div className="bg-white/60 backdrop-blur-md border border-white/30 p-1 rounded-full shadow-sm inline-flex"> */}
+        <div className="hidden sm:flex">
+          <PillTabs
+            items={navItems}
+            value={navActive}
+            onChange={setNavActive}
+            size="lg"
+            id="navbar"
+          />
+        </div>
+        {/* </div> */}
 
-        {/* <div className="hidden md:flex gap-2 text-sm">
-          {["Home", "About", "Features", "Product"].map((item, i) => (
-            <button
-              key={item}
-              className={`px-4 py-1.5 rounded-full transition-all duration-300 cursor-pointer
-                ${i === 0
-                  ? "bg-red-500 text-white shadow-sm"
-                  : "text-gray-600 hover:bg-white/40 hover:text-black"
-                }`
+        <div className="flex items-center gap-2">
+          {/* Cart */}
+          <button
+            className={`relative flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 ease-out
+              ${scrolled
+                ? "bg-white/60 backdrop-blur-xl border border-white/30 shadow-[0_4px_20px_rgba(0,0,0,0.08)]"
+                : "bg-white/30 backdrop-blur-md border border-white/20"
               }
-            >
-              {item}
-            </button>
-          ))}
-        </div> */}
+              hover:scale-105 hover:bg-white/70 cur
+            `}
+          >
+            <ShoppingCart className="w-6 h-6 text-gray-700" />
 
-        {/* CTA */}
-        <button
-          className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-red-500 text-white
-            ${scrolled
-              ? "shadow-md hover:scale-105"
-              : "hover:scale-105"
-            }`
-          }
-        >
-          Explore
-        </button>
+            {/* Badge */}
+            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] px-1.5 py-px rounded-full shadow-sm">
+              2
+            </span>
+          </button>
+
+          {/* User */}
+          <button
+            className={`flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 ease-out
+              ${scrolled
+                ? "bg-white/60 backdrop-blur-xl border border-white/30 shadow-[0_4px_20px_rgba(0,0,0,0.08)]"
+                : "bg-white/30 backdrop-blur-md border border-white/20"
+              }
+              hover:scale-105 hover:bg-white/70
+            `}
+          >
+            <CircleUserRound className="w-6 h-6 text-gray-700" />
+          </button>
+        </div>
       </div>
     </div>
   );
