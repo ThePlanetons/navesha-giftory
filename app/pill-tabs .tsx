@@ -60,10 +60,9 @@ function MagneticPill({ item, active, onClick, size, layoutId }: MagneticPillPro
   const [pos, setPos] = useState({ x: 0, y: 0 });
 
   const sizeStyles = {
-    sm: "px-3 py-1 text-xs",
-    md: "px-4 py-1.5 text-sm",
+    sm: "px-3 py-1 text-base",
+    md: "px-4 py-1.5 text-lg",
     lg: "px-5 py-2 text-base",
-    xl: "px-6 py-2.5 text-lg",
   };
 
   return (
@@ -71,16 +70,14 @@ function MagneticPill({ item, active, onClick, size, layoutId }: MagneticPillPro
       onClick={() => onClick(item.value)}
       onMouseMove={(e) => {
         const rect = e.currentTarget.getBoundingClientRect();
-        const x = (e.clientX - rect.left - rect.width / 2) * 0.2;
-        const y = (e.clientY - rect.top - rect.height / 2) * 0.2;
+        const x = Math.round((e.clientX - rect.left - rect.width / 2) * 0.2);
+        const y = Math.round((e.clientY - rect.top - rect.height / 2) * 0.2);
         setPos({ x, y });
       }}
       onMouseLeave={() => setPos({ x: 0, y: 0 })}
       animate={{ x: pos.x, y: pos.y }}
       transition={{ type: "spring", stiffness: 150, damping: 15 }}
-      className={`relative font-medium text-gray-900 cursor-pointer
-        ${sizeStyles[size]}
-      `}
+      className={`relative font-medium tracking-wider cursor-pointer will-change-transform antialiased ${sizeStyles[size]}`}
     >
       {/* Sliding Pill */}
       {active === item.value && (
@@ -94,8 +91,8 @@ function MagneticPill({ item, active, onClick, size, layoutId }: MagneticPillPro
       {/* Text */}
       <span
         className={`relative z-10 transition-colors ${active === item.value
-            ? "text-white"
-            : "hover:text-black"
+          ? "text-white"
+          : "hover:text-black"
           }`}
       >
         {item.label}

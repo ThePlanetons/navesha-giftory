@@ -27,7 +27,15 @@ export default function HeroSection() {
             stories and inspirations behind the art
           </p> */}
 
-          <button className="mt-5 bg-red-500 text-white px-6 py-2 rounded-full">
+          {/* <PillTabs
+            items={categories}
+            value={categoryActive}
+            onChange={setCategoryActive}
+            size="md"
+            id="collections"
+          /> */}
+
+          <button className="mt-5 bg-red-500 text-white px-5 py-2 text-base font-medium tracking-wider cursor-pointer rounded-full">
             Explore
           </button>
         </div>

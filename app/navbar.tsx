@@ -35,17 +35,17 @@ export default function Navbar({ scrolled }: { scrolled: boolean }) {
         </div>
 
         {/* Nav Items */}
-        {/* <div className="bg-white/60 backdrop-blur-md border border-white/30 p-1 rounded-full shadow-sm inline-flex"> */}
-        <div className="hidden sm:flex">
-          <PillTabs
-            items={navItems}
-            value={navActive}
-            onChange={setNavActive}
-            size="lg"
-            id="navbar"
-          />
+        <div className="bg-white/60 backdrop-blur-md border border-white/30 p-1 rounded-full shadow-sm inline-flex">
+          <div className="hidden sm:flex">
+            <PillTabs
+              items={navItems}
+              value={navActive}
+              onChange={setNavActive}
+              size="lg"
+              id="navbar"
+            />
+          </div>
         </div>
-        {/* </div> */}
 
         <div className="flex items-center gap-2">
           {/* Cart */}

@@ -118,11 +118,11 @@ export default function Collections() {
 
               {/* Footer */}
               <div className="flex justify-between items-center">
-                <span className="text-sm sm:text-base font-medium">
+                <span className="text-base sm:text-lg font-semibold tracking-wide">
                   {card.title}
                 </span>
 
-                <button className="text-xs sm:text-sm px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 transition">
+                <button className="text-sm sm:text-base font-medium tracking-wide px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 transition cursor-pointer">
                   View All
                 </button>
               </div>
