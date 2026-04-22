@@ -71,7 +71,7 @@ export default function Collections() {
           items={categories}
           value={categoryActive}
           onChange={setCategoryActive}
-          size="md"
+          size="lg"
           id="collections"
         />
 

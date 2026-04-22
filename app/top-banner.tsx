@@ -1,3 +1,5 @@
+"use client";
+
 export default function TopBanner({ scrolled }: { scrolled: boolean }) {
   return (
     <div

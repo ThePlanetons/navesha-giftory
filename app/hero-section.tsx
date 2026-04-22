@@ -1,7 +1,19 @@
 "use client";
+
+import { useState } from "react";
 import Image from "next/image";
+import PillTabs from "./pill-tabs ";
 
 export default function HeroSection() {
+  const heros = [
+    "Explore",
+  ].map((item) => ({
+    label: item,
+    value: item.toLowerCase(),
+  }));
+
+  const [herosActive, setHerosActive] = useState("explore");
+
   const images = [
     "/images/one-piece-1.jpg",
     "/images/grand-theft-auto-6-video-game.jpg",
@@ -27,17 +39,19 @@ export default function HeroSection() {
             stories and inspirations behind the art
           </p> */}
 
-          {/* <PillTabs
-            items={categories}
-            value={categoryActive}
-            onChange={setCategoryActive}
-            size="md"
-            id="collections"
-          /> */}
+          <div className="flex justify-center mt-5">
+            <PillTabs
+              items={heros}
+              value={herosActive}
+              onChange={setHerosActive}
+              size="lg"
+              id="heros"
+            />
+          </div>
 
-          <button className="mt-5 bg-red-500 text-white px-5 py-2 text-base font-medium tracking-wider cursor-pointer rounded-full">
+          {/* <button className="mt-5 bg-red-500 text-white px-5 py-2 text-base font-medium tracking-wider cursor-pointer will-change-transform antialiased">
             Explore
-          </button>
+          </button> */}
         </div>
 
         {/* Image Section */}

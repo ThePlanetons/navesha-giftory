@@ -59,11 +59,17 @@ type MagneticPillProps = {
 function MagneticPill({ item, active, onClick, size, layoutId }: MagneticPillProps) {
   const [pos, setPos] = useState({ x: 0, y: 0 });
 
-  const sizeStyles = {
-    sm: "px-3 py-1 text-base",
-    md: "px-4 py-1.5 text-lg",
-    lg: "px-5 py-2 text-base",
+  const activeSizeStyles = {
+    sm: "px-3 py-1",
+    md: "px-4 py-1.5",
+    lg: "px-5 py-2",
   };
+
+  // const sizeStyles = {
+  //   sm: "px-2.5 py-1",
+  //   md: "px-3 py-1.5",
+  //   lg: "px-3.5 py-2",
+  // };
 
   return (
     <motion.button
@@ -77,7 +83,13 @@ function MagneticPill({ item, active, onClick, size, layoutId }: MagneticPillPro
       onMouseLeave={() => setPos({ x: 0, y: 0 })}
       animate={{ x: pos.x, y: pos.y }}
       transition={{ type: "spring", stiffness: 150, damping: 15 }}
-      className={`relative font-medium tracking-wider cursor-pointer will-change-transform antialiased ${sizeStyles[size]}`}
+      className={
+        `
+          relative rounded-full text-sm md:text-base font-medium tracking-wider cursor-pointer will-change-transform antialiased 
+          ${activeSizeStyles[size]}
+          ${active === item.value ? "" : "bg-gray-200 hover:bg-gray-200"}
+        `
+      }
     >
       {/* Sliding Pill */}
       {active === item.value && (
@@ -89,12 +101,7 @@ function MagneticPill({ item, active, onClick, size, layoutId }: MagneticPillPro
       )}
 
       {/* Text */}
-      <span
-        className={`relative z-10 transition-colors ${active === item.value
-          ? "text-white"
-          : "hover:text-black"
-          }`}
-      >
+      <span className={`relative z-10 transition-colors ${active === item.value ? "text-white" : ""}`}>
         {item.label}
       </span>
     </motion.button>
