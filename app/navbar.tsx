@@ -35,7 +35,8 @@ export default function Navbar({ scrolled }: { scrolled: boolean }) {
         </div>
 
         {/* Nav Items */}
-        {/* <div className="hidden sm:inline-flex bg-white/60 backdrop-blur-md border border-white/30 p-1 rounded-full shadow-sm"> */}
+        {/* <div className="hidden sm:flex bg-white/60 backdrop-blur-md border border-white/30 p-1 rounded-full shadow-sm"> */}
+        <div className="hidden sm:flex">
           <PillTabs
             items={navItems}
             value={navActive}
@@ -43,7 +44,7 @@ export default function Navbar({ scrolled }: { scrolled: boolean }) {
             size="lg"
             id="navbar"
           />
-        {/* </div> */}
+        </div>
 
         <div className="flex items-center gap-2">
           {/* Cart */}

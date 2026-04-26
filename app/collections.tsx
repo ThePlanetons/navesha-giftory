@@ -1,16 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import PillTabs from "./pill-tabs ";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function Collections() {
   const categories = [
-    "Kollywood Classics",
-    "Featured Universes",
-    "Hollywood Highlights",
-    "Korean Wave",
     "Action Packed",
+    "Featured Universes",
+    "Korean Wave",
     "Editor’s Choice",
     "Feel Good",
     "Trending Now",
@@ -57,10 +56,35 @@ export default function Collections() {
     },
   ];
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const scrollToIndex = (index: number) => {
+    const el = cardRefs.current[index];
+    if (!el) return;
+
+    el.scrollIntoView({
+      behavior: "smooth",
+      inline: "start",
+      block: "nearest",
+    });
+  };
+
+  const next = () => {
+    const nextIndex = (currentIndex + 1) % cards.length;
+    setCurrentIndex(nextIndex);
+    scrollToIndex(nextIndex);
+  };
+
+  const prev = () => {
+    const prevIndex = (currentIndex - 1 + cards.length) % cards.length;
+    setCurrentIndex(prevIndex);
+    scrollToIndex(prevIndex);
+  };
+
   return (
     <div className="flex items-center justify-center px-3 sm:px-4 md:px-6 lg:px-8 py-6">
-      <div className="bg-gray-100 rounded-2xl shadow-lg p-4 sm:p-6 md:p-8 w-full">
-
+      <div className="w-full">
         {/* Header */}
         <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4">
           Popular Collections
@@ -76,14 +100,19 @@ export default function Collections() {
         />
 
         {/* Cards Grid */}
-        <div className="flex gap-4 sm:gap-5 md:gap-6 overflow-x-auto pb-2 mt-6 sm:flex xl:grid xl:grid-cols-3 xl:overflow-visible no-scrollbar">
+        <div
+          className="flex gap-5 overflow-x-auto pb-2 mt-6 xl:grid xl:grid-cols-3 xl:overflow-visible no-scrollbar"
+        >
           {cards.map((card, i) => (
             <div
               key={card.title}
-              className="min-w-[80%] sm:min-w-[45%] md:min-w-[60%] lg:min-w-[44%] xl:min-w-0 bg-white rounded-2xl p-3 sm:p-4 shadow hover:shadow-md transition"
+              ref={(el) => {
+                cardRefs.current[i] = el;
+              }}
+              className="w-full shrink-0 lg:w-[49%] xl:w-full bg-gray-200 rounded-2xl p-3 sm:p-4 shadow hover:shadow-md transition"
             >
               {/* Main Image */}
-              <div className="relative w-full h-48 sm:h-52 md:h-56 lg:h-60 mb-3">
+              <div className="relative w-full h-52 md:h-56 lg:h-64 xl:h-72 mb-3">
                 <Image
                   src={card.img}
                   alt={card.title}
@@ -99,7 +128,7 @@ export default function Collections() {
                 {card.child.map((img, i) => (
                   <div
                     key={i}
-                    className="relative w-20 h-20 sm:w-24 sm:h-24 xl:w-28 xl:h-28"
+                    className="relative w-24 h-24 md:w-44 md:h-44 lg:w-30 lg:h-30 xl:w-28 xl:h-28"
                   >
                     <Image
                       src={img}
@@ -128,6 +157,16 @@ export default function Collections() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="flex justify-end gap-2 mt-4">
+          <button onClick={prev} className="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+            <ChevronLeft size={18} />
+          </button>
+
+          <button onClick={next} className="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+            <ChevronRight size={18} />
+          </button>
         </div>
       </div>
     </div>

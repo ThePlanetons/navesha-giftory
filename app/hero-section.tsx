@@ -62,7 +62,7 @@ export default function HeroSection() {
           <div className="flex w-max animate-scroll gap-1 sm:gap-2 will-change-transform">
             {[...images, ...images].map((src, i) => (
               <div key={i}
-                className="relative w-72 md:w-80 lg:w-88 h-72 md:h-86 lg:h-100 aspect-3/4 shrink-0 overflow-hidden"
+                className="relative w-72 md:w-80 lg:w-88 h-68 md:h-84 lg:h-100 aspect-3/4 shrink-0 overflow-hidden"
               >
                 <Image
                   src={src}
