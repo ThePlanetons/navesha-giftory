@@ -22,13 +22,11 @@ export default function Home() {
 
   return (
     <>
-      {/* Fixed Header */}
       <div className="fixed top-0 left-0 w-full z-50">
         {/* <TopBanner scrolled={scrolled} /> */}
         <Navbar scrolled={scrolled} />
       </div>
 
-      {/* Page Content */}
       <div className="pt-27.5 md:pt-30">
         <HeroSection />
         <Collections />

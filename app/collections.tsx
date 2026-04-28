@@ -161,11 +161,11 @@ export default function Collections() {
 
         <div className="flex justify-end gap-2 mt-4">
           <button onClick={prev} className="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
-            <ChevronLeft size={18} />
+            <ChevronLeft size={20} />
           </button>
 
           <button onClick={next} className="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
-            <ChevronRight size={18} />
+            <ChevronRight size={20} />
           </button>
         </div>
       </div>
